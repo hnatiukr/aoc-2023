@@ -1,0 +1,21 @@
+{
+  "name": "aoc-2022",
+  "version": "0.1.0",
+  "description": "Solving Advent of Code 2023 in TypeScript",
+  "author": "Roman Hnatiuk <hnatiukr@pm.me>",
+  "homepage": "https://github.com/hnatiukr/aoc-2022#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hnatiukr/aoc-2023.git"
+  },
+  "type": "module",
+  "devDependencies": {
+    "@types/node": "20.10.1",
+    "copyfiles": "2.4.1",
+    "prettier": "3.1.0",
+    "typescript": "5.3.2"
+  },
+  "dependencies": {
+    "ts-pattern": "5.0.5"
+  }
+}
