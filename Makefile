@@ -1,21 +1,19 @@
-.PHONY: new debug test
+.PHONY: new test print
 
 install:
-	npm ci
+	@make print TEXT="Installing dependencies 🛠️"
+	@npm ci
 
 test:
-	tsc day/$(day)/index.ts --module NodeNext --moduleResolution nodenext
-	node day/$(day)/index.js
-	rm day/$(day)/index.js
+	@make print TEXT="Compiling 🏗️"
+	@tsc day/$(day)/index.ts --module NodeNext --moduleResolution nodenext
+	@make print TEXT="Printing result 🙈"
+	@node day/$(day)/index.js
+	@rm day/$(day)/index.js
 
 new:
-	mkdir day/${day}
-	touch day/${day}/index.ts day/${day}/input.txt day/${day}/README.md
+	@mkdir day/${day}
+	@touch day/${day}/index.ts day/${day}/input.txt day/${day}/README.md
 
-debug:
-	rm -rf debug
-	mkdir debug
-	npx tsc --module node16 --outDir debug day/$(day)/index.ts
-	cp ./day/$(day)/input.txt ./debug/day/$(day)
-	node debug/day/$(day)
-	rm -rf debug
+print:
+	@echo "$(BLUE)> $(TEXT)$(NOCOLOR)"
