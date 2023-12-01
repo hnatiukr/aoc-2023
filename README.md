@@ -5,8 +5,20 @@
 
 https://adventofcode.com/2022
 
-### Installation
+## Installation
 
 ```console
-make && make build
+make
+```
+
+## Set up a new day
+
+```console
+make new day=01 // where `01` is a new date
+```
+
+## Test your solution
+
+```console
+make test day=01 // where `01` is a testing date
 ```

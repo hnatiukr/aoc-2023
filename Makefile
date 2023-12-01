@@ -1,18 +1,14 @@
-.PHONY: build run create debug
+.PHONY: new debug test
 
 install:
 	npm ci
 
-build:
-	npx prettier --write .
-	rm -rf build
-	npx tsc
-	npx copyfiles --up 1 --all ./day/**/input.txt build/day
+test:
+	tsc day/$(day)/index.ts --module NodeNext --moduleResolution nodenext
+	node day/$(day)/index.js
+	rm day/$(day)/index.js
 
-run:
-	node build/day/$(day)
-
-create:
+new:
 	mkdir day/${day}
 	touch day/${day}/index.ts day/${day}/input.txt day/${day}/README.md
 
