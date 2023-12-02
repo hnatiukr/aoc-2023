@@ -26,7 +26,12 @@ test:
 new:
 	@make print TEXT="🏗️ Preparing files for the day $(day)... \n"
 	@mkdir day/${day}
-	@touch day/${day}/index.ts day/${day}/input.txt day/${day}/README.md
+	@touch day/${day}/index.ts
+	@touch day/${day}/part1.ts
+	@touch day/${day}/part2.ts
+	@touch day/${day}/test.ts
+	@touch day/${day}/input.txt
+	@touch day/${day}/README.md
 	@make print TEXT="⛄️ Files have beed created. Good luck! \n"
 
 clean:
