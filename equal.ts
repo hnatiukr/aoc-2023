@@ -5,12 +5,12 @@ function equal(description: string, expected: number, actual: number);
 function equal(description: string, expected: string | number, actual: string | number) {
     match(expected === actual)
         .with(true, () => {
-            console.log(`> PASS ${description}`);
-            console.log(`the result is correct: ${actual}`);
+            console.log(`✅ PASS ${description}`);
+            console.log(`the result is correct: ${actual}\n`);
         })
         .otherwise(() => {
-            console.log(`> FAIL ${description}`);
-            console.log(`expected ${expected}, but got ${actual}`);
+            console.log(`🚷 FAIL ${description}`);
+            console.log(`expected ${expected}, but got ${actual}\n`);
         });
 }
 
