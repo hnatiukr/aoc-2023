@@ -11,14 +11,26 @@ https://adventofcode.com/2022
 make
 ```
 
-## Set up a new day
+## Prepare files for a new day
 
 ```console
-make new day=01 // where `01` is a new date
+make new day=01
 ```
 
-## Test your solution
+> where `01` is a new date
+
+## Run challenge
 
 ```console
-make test day=01 // where `01` is a testing date
+make run day=01
 ```
+
+> where `01` is a new date
+
+## Run tests
+
+```console
+make test day=01
+```
+
+> where `01` is a new date
