@@ -1,8 +1,13 @@
-.PHONY: new run test print clean
+.PHONY: new run test print clean progress
 
 install:
 	@make print TEXT="🛠 Installing dependencies...️ \n"
 	@npm ci
+
+progress:
+	@make print TEXT="📈 Updating progress badge...️"
+	@node .github/badges/script.js
+	@make print TEXT="👻 Badge has been updated️.\n"
 
 run:
 	@make print TEXT="📥 Compiling... \n"
@@ -25,7 +30,11 @@ new:
 	@make print TEXT="⛄️ Files have beed created. Good luck! \n"
 
 clean:
-	@find . -type f -name "*.js" -not -path "./node_modules/*" -delete
+	@make print TEXT="🧹 Cleaning up... \n"
+	@find . -type f -name "*.js" \
+		-not -path "./node_modules/*" \
+		-not -path "./.github/*" \
+		-delete
 
 print:
 	@echo "$(BLUE)> $(TEXT)$(NOCOLOR)"
