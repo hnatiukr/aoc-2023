@@ -1,25 +1,31 @@
-.PHONY: build run create debug
+.PHONY: new run test print clean
 
 install:
-	npm ci
-
-build:
-	npx prettier --write .
-	rm -rf build
-	npx tsc
-	npx copyfiles --up 1 --all ./day/**/input.txt build/day
+	@make print TEXT="🛠 Installing dependencies...️ \n"
+	@npm ci
 
 run:
-	node build/day/$(day)
+	@make print TEXT="📥 Compiling... \n"
+	@tsc day/$(day)/index.ts --module NodeNext --moduleResolution nodenext
+	@make print TEXT="🙈 Printing result... \n"
+	@node day/$(day)/index.js
+	@make clean
 
-create:
-	mkdir day/${day}
-	touch day/${day}/index.ts day/${day}/input.txt day/${day}/README.md
+test:
+	@make print TEXT="📥 Compiling... \n"
+	@tsc day/$(day)/test.ts --module NodeNext --moduleResolution nodenext
+	@make print TEXT="🔬 Running tests... \n"
+	@node day/$(day)/test.js
+	@make clean
 
-debug:
-	rm -rf debug
-	mkdir debug
-	npx tsc --module node16 --outDir debug day/$(day)/index.ts
-	cp ./day/$(day)/input.txt ./debug/day/$(day)
-	node debug/day/$(day)
-	rm -rf debug
+new:
+	@make print TEXT="🏗️ Preparing files for the day $(day)... \n"
+	@mkdir day/${day}
+	@touch day/${day}/index.ts day/${day}/input.txt day/${day}/README.md
+	@make print TEXT="⛄️ Files have beed created. Good luck! \n"
+
+clean:
+	@find . -type f -name "*.js" -not -path "./node_modules/*" -delete
+
+print:
+	@echo "$(BLUE)> $(TEXT)$(NOCOLOR)"
