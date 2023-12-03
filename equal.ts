@@ -6,11 +6,11 @@ function equal(description: string, expected: string | number, actual: string | 
     match(expected === actual)
         .with(true, () => {
             console.log(`✅ PASS ${description}`);
-            console.log(`the result is correct: ${actual}\n`);
+            console.log(`> expected result is correct: ${actual}\n`);
         })
         .otherwise(() => {
             console.log(`🚷 FAIL ${description}`);
-            console.log(`expected ${expected}, but got ${actual}\n`);
+            console.log(`> expected ${expected}, but got ${actual}\n`);
         });
 }
 
