@@ -1,22 +1,22 @@
-type Cubes = {
+export type Cubes = {
     red: number;
     green: number;
     blue: number;
 };
 
-type Round = Cubes & { id: number };
+export type Round = Cubes & { id: number };
 
 const BAG_LIMITS: Cubes = { red: 12, green: 13, blue: 14 } as const;
 
 //
 
-function matchGameId(line: string) {
+export function matchGameId(line: string) {
     const regex = /Game (\d+):/;
     const maybeGameId = line.match(regex);
     return maybeGameId ? Number.parseInt(maybeGameId[1], 10) : 0;
 }
 
-function makeRounds(line: string) {
+export function makeRounds(line: string) {
     const gameId = matchGameId(line);
     const regex = /(\d+) (blue|green|red)/g;
 
@@ -34,14 +34,14 @@ function makeRounds(line: string) {
     }, [] as Round[]);
 }
 
-function isGamePossible(rounds: Round[]) {
+export function isGamePossible(rounds: Round[]) {
     return rounds.every(
         ({ red, green, blue }) =>
             red <= BAG_LIMITS.red && green <= BAG_LIMITS.green && blue <= BAG_LIMITS.blue,
     );
 }
 
-function calculateSum(sum: number, game: Round[]) {
+export function calculateSum(sum: number, game: Round[]) {
     return (sum += game[0].id);
 }
 
