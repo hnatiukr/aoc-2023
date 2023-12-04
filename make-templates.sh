@@ -23,7 +23,7 @@ import readInput from '../../read-input.js';
 import part1 from './part1.js';
 import part2 from './part2.js';
 
-const input = readInput('$(maybeAoCDate)');
+const input = readInput('${maybeAoCDate}');
 
 console.log(part1(input));
 console.log(part2(input));
@@ -40,7 +40,7 @@ import equal from '../../equal.js';
 import part1 from './part1.js';
 import part2 from './part2.js';
 
-const input = [];
+const input = [''];
 
 equal('part1', 0, part1(input));
 equal('part2', 0, part2(input));
