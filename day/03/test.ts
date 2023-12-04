@@ -1,7 +1,7 @@
 import equal from '../../equal.js';
 
 import part1 from './part1.js';
-// import part2 from './part2.js';
+import part2 from './part2.js';
 
 const input = [
     '467..114..',
@@ -17,4 +17,4 @@ const input = [
 ];
 
 equal('part1', 4361, part1(input));
-// equal('part2', 0, part2(input));
+equal('part2', 467835, part2(input));
