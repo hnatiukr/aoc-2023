@@ -13,7 +13,7 @@ const BAG_LIMITS: Cubes = { red: 12, green: 13, blue: 14 } as const;
 export function matchGameId(line: string) {
     const regex = /Game (\d+):/;
     const maybeGameId = line.match(regex);
-    return maybeGameId ? Number.parseInt(maybeGameId[1], 10) : 0;
+    return maybeGameId ? Number.parseInt(maybeGameId[1] || '', 10) : 0;
 }
 
 export function makeRounds(line: string) {
@@ -27,7 +27,9 @@ export function makeRounds(line: string) {
         while ((match = regex.exec(set)) !== null) {
             const [, number, color] = match;
 
-            cubes[color] += Number.parseInt(number, 10);
+            if (color) {
+                cubes[color as keyof Cubes] += Number.parseInt(number || '', 10);
+            }
         }
 
         return [...acc, cubes];
@@ -42,7 +44,7 @@ export function isGamePossible(rounds: Round[]) {
 }
 
 export function calculateSum(sum: number, game: Round[]) {
-    return (sum += game[0].id);
+    return (sum += game[0]?.id || 0);
 }
 
 //

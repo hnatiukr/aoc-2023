@@ -34,10 +34,7 @@ new:
 
 clean:
 	@make print TEXT="🧹 Cleaning up... \n"
-	@find . -type f -name "*.js" \
-		-not -path "./node_modules/*" \
-		-not -path "./.github/*" \
-		-delete
+	@tsc --build --clean
 
 format:
 	@npx prettier --write --log-level silent .
